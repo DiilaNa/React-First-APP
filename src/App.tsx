@@ -1,5 +1,7 @@
 // import React, { Component } from 'react';
-import { Fragment } from "react/jsx-runtime";
+// import { Fragment } from "react/jsx-runtime";
+
+import Test from './components/MyComponents';
 
 
 
@@ -49,7 +51,16 @@ function App() {
       <h1>{value}</h1> 
       {value ? <h1>Hello,{value}</h1>: <h1>Hello, React</h1>}
       {console.log(value)}
-      <h1>Hello, {value || "React"}</h1>
+
+    /* Add css styles */
+
+      <h1
+        className = ""
+        style ={{
+          backgroundColor: "lightblue"
+        }}>
+
+        Hello, {value || "React"}</h1>
       <h2>this is react</h2>
       <h2>app component</h2>
     </>
