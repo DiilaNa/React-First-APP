@@ -144,18 +144,108 @@
 
 // -----------------------Event Handling ------------------------------------------------
 
-const App = () => {
+// const App = () => {
 
-  const handleButtonClick = () => {
-    console.log("You Clicked Me");
+//   const handleButtonClick = (e: any) => {
+//     console.log("You Clicked Me");
+//     e.target.textContent = "Ouch"
     
+//   }
+//   return (
+//     <>
+//       <h1>Event Handling</h1>
+//       <hr />
+//       <button onClick={handleButtonClick}>Click Me</button>
+//     </>
+//   )
+// }
+// export default App 
+
+
+
+// -----------------------Hook ------------------------------------------------
+
+
+
+
+// // -------------------------State------------------------------------------------
+//   // useState is a Hook that allows you to have state variables in functional components.
+
+// import { useState } from "react";
+
+// const App = () => {
+//   //let count : number = 0;  No more use varibales in react
+//   // data name, setter method name
+//   let [count, setCount] = useState(0);
+
+//   const increment = () => {
+//     setCount((prev) => prev + 1);
+//   }
+
+//   const decrement = () => {
+//     setCount((prev) => prev - 1);
+//   }
+
+//   const reset = () => {
+//     setCount(0);
+//   }
+//   return (
+//     <>
+//       <h1>Count :{count}</h1>
+    
+      
+//       <div>
+//         <button onClick={() => increment()}>+</button>
+//         <button onClick={() => reset()}>reset</button>
+//         <button onClick={() => decrement()}>-</button>
+//       </div>
+      
+//     </>
+//   )
+// }    
+
+// export default App
+
+
+// ----------------------------Form-------------------------------------------------
+
+import { useState } from "react";
+
+const App = () => {
+  const [name, setName] = useState<string>("");
+  const [age, setAge] = useState<number>(0);
+  const [email, setEmail] = useState<string>("");
+
+  const [users,setUsers] = useState<any[]>([])
+
+  const addUser = () => {
+    if(!name || !age || !email){
+      alert("Please fill all the fields")
+      return
+    }
+    const user = { name, age, email }
+    setUsers((prev) => [...prev, user])
   }
+
   return (
-    <>
-      <h1>Event Handling</h1>
+    <div className="p-5 bg-red-400">
+      <h4 className="font-bold" >Name :{name}  Age :{age} Email :{email}</h4>
       <hr />
-      <button onClick={handleButtonClick}>Click Me</button>
-    </>
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+      <input type="number" value={age} onChange={(e) => setAge(Number(e.target.value))} placeholder="Age" />
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+      <button onClick={() => addUser()}>Submit</button>
+      {
+        users?.map((data, index) => (
+          <div key={index}>
+            <h5>Name : {data?.name}</h5>
+            <h5>Age : {data?.age}</h5>
+            <h5>Email : {data?.email}</h5>
+          </div>
+        ))
+      }
+    </div>
   )
 }
-export default App 
+
+export default App
