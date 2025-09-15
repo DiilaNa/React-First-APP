@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 // import { Fragment } from "react/jsx-runtime";
 
-import Test from './components/MyComponents';
+import MyComponent from './components/MyComponents';
 
 
 
@@ -21,6 +21,7 @@ import Test from './components/MyComponents';
 
 function App() {
 
+
   // java script athule xml use karanna puluwan
   // e.g. const element = <h1>Hello, world!</h1>;
 
@@ -30,7 +31,8 @@ function App() {
   // 3. <> </> - NEW
    let value: string = "Dilan";
   return(
-  //  <div>       
+    
+  //  <div>     
   //   <h1>Hello, world!</h1>
   //   <p>Functional components can hold and manage their own state.</p>
   //   </div>
@@ -48,16 +50,30 @@ function App() {
 
     //We can use JavaScript expressions inside Html by wrapping them in curly braces {}
     <>
+        <MyComponent />
+        <MyComponent>
+           <h5> I am a Default prop </h5>
+        </MyComponent>
+
+        <MyComponent>
+          <h4>I am a Default prop (2)</h4>
+        </MyComponent> 
+
+        <MyComponent name = {"Dilan"}
+        age = {22}
+        email = {"dilan@example.com"}>
+
+        </MyComponent>
+
       <h1>{value}</h1> 
       {value ? <h1>Hello,{value}</h1>: <h1>Hello, React</h1>}
       {console.log(value)}
 
-    /* Add css styles */
-
+     {/* Add css styles */}
       <h1
         className = ""
         style ={{
-          backgroundColor: "lightblue"
+          color: "blue"
         }}>
 
         Hello, {value || "React"}</h1>
